@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% if title %}
+    <title>Wake on MAN - {{ title }}</title>
+    {% else %}
+    <title>Wake on MAN</title>
+    {% endif %}
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="{% static 'wakeapp/style.css' %}"/>
+
+{% block content %}{% endblock %}
+</body>
+</html>
