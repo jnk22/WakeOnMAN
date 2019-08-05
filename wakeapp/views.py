@@ -10,7 +10,10 @@ category_pyhsical = hosts.Category("Physical Computers")
 category_vm = hosts.Category("Virtual Machines")
 categories_sample.extend([category_pyhsical, category_vm])
 
-computers_sample.append(hosts.Host("PC 1", category_pyhsical))
+computers_sample.append(hosts.Host("PC 1", category_pyhsical,
+                                   mac_address="00:00:00:00:00:00",
+                                   ipv4_address="192.168.0.1",
+                                   ipv6_address="2001:0db8:85a3:0000:0000:8a2e:0370:7334"))
 computers_sample.append(hosts.Host("PC 2", category_pyhsical))
 computers_sample.append(hosts.Host("PC 3", category_pyhsical))
 computers_sample.append(hosts.Host("PC 4", category_pyhsical))

@@ -1,28 +1,53 @@
-.container {
+.host-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
-    grid-auto-rows: minmax(100px, auto);
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 10px;
+    padding: 20px;
 }
 
 .host-physical {
-    background-color: #4CAF50; /* Green */
+    background-color: mediumseagreen; /* Green */
     border: none;
     color: white;
-    padding: 15px 32px;
-    text-align: center;
+    padding: 10px 10px;
+    text-align: left;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
 }
 
 .host-virtual {
-    background-color: #FF0000; /* Green */
+    background-color: coral; /* Green */
     border: none;
     color: white;
-    padding: 15px 32px;
-    text-align: center;
+    padding: 10px 10px;
+    text-align: left;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+}
+
+.body-container {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: 10vw 1fr 10vw;
+    margin: 0 auto;
+    max-width: 98%;
+    grid-gap: 1em;
+}
+
+.header, .footer {
+    grid-column: 1 / span 2;
+}
+
+.header, .main, .aside, .footer {
+    background: #eaeaea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-dashboard {
+    background: #eaeaea;
+    display: grid;
 }
