@@ -5,29 +5,38 @@
             Header
         </div>
         <div class="main-dashboard">
-            {% for category in categories %}
-                <div class="host-container">
-                    {% for host in computers %}
-                        {% if host.category == category and category.name == "Physical Computers" %}
-                            <div class="host-physical">{{ host.name }}
-                                <br> {{ host.category.name }}
-                                <br> {{ host.mac_address }}
-                                <br> {{ host.ipv4_address }}
-                                <br> {{ host.ipv6_address }}
-                                <br> {{ host.wol_port }}
-                            </div>
-                        {% elif host.category == category and category.name == "Virtual Machines" %}
-                            <div class="host-virtual">{{ host.name }}
-                                <br> {{ host.category.name }}
-                                <br> {{ host.mac_address }}
-                                <br> {{ host.ipv4_address }}
-                                <br>{{ host.ipv6_address }}
-                                <br> {{ host.wol_port }}
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            {% endfor %}
+            <div class="host-container">
+                {% for host in hosts %}
+                    {% if host.category.name == "Physical" %}
+                        <div class="host-physical">
+                            {{ host.name }} <br>
+                            {{ host.category.name }} <br>
+                            {{ host.mac_address }} <br>
+                            {{ host.ipv4_address }} <br>
+                            {{ host.ipv6_address }} <br>
+                            {{ host.wol_port }}
+                        </div>
+                    {% elif host.category.name == "Virtual" %}
+                        <div class="host-virtual">
+                            {{ host.name }} <br>
+                            {{ host.category.name }} <br>
+                            {{ host.mac_address }} <br>
+                            {{ host.ipv4_address }} <br>
+                            {{ host.ipv6_address }} <br>
+                            {{ host.wol_port }}
+                        </div>
+                    {% else %}
+                        <div class="host-default">
+                            {{ host.name }} <br>
+                            {{ host.category.name }} <br>
+                            {{ host.mac_address }} <br>
+                            {{ host.ipv4_address }} <br>
+                            {{ host.ipv6_address }} <br>
+                            {{ host.wol_port }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
         </div>
         <div class="aside">
             Sidebar

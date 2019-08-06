@@ -5,8 +5,8 @@
     padding: 20px;
 }
 
-.host-physical {
-    background-color: mediumseagreen; /* Green */
+.host-virtual {
+    background-color: coral;
     border: none;
     color: white;
     padding: 10px 10px;
@@ -16,8 +16,19 @@
     font-size: 16px;
 }
 
-.host-virtual {
-    background-color: coral; /* Green */
+.host-physical {
+    background-color: mediumseagreen;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.host-default {
+    background-color: darkslateblue;
     border: none;
     color: white;
     padding: 10px 10px;
