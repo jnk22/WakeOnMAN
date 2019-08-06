@@ -3,6 +3,9 @@ from django.utils import timezone
 from macaddress.fields import MACAddressField
 from colorful.fields import RGBColorField
 
+import wakeonlan
+import getmac
+
 
 class HostCategory(models.Model):
     id = models.AutoField(primary_key=True)
@@ -36,6 +39,25 @@ class Host(models.Model):
     remote_splahstop_url = models.URLField(null=True, blank=True)
     category = models.ForeignKey(HostCategory, on_delete=models.SET_NULL,
                                  null=True, blank=True)
+
+    def start(self):
+        if self.mac_address:
+            wakeonlan.send_magic_packet(str(self.mac_address))
+        else:
+            raise AttributeError("No MAC address available")
+
+    def find_mac(self):
+        mac_address_ipv4 = getmac.get_mac_address(self.ipv4_address)
+        mac_address_ipv6 = getmac.get_mac_address(self.ipv6_address)
+
+        if mac_address_ipv4 == mac_address_ipv6:
+            return mac_address_ipv4
+        if mac_address_ipv4 and not mac_address_ipv6:
+            return mac_address_ipv4
+        elif mac_address_ipv6 and not mac_address_ipv4:
+            return mac_address_ipv6
+        else:
+            raise AttributeError("Both IPs do not match the same MAC address")
 
     def __str__(self):
         return self.name
