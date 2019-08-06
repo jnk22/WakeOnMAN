@@ -7,34 +7,15 @@
         <div class="main-dashboard">
             <div class="host-container">
                 {% for host in hosts %}
-                    {% if host.category.name == "Physical" %}
-                        <div class="host-physical">
-                            {{ host.name }} <br>
-                            {{ host.category.name }} <br>
-                            {{ host.mac_address }} <br>
-                            {{ host.ipv4_address }} <br>
-                            {{ host.ipv6_address }} <br>
-                            {{ host.wol_port }}
-                        </div>
-                    {% elif host.category.name == "Virtual" %}
-                        <div class="host-virtual">
-                            {{ host.name }} <br>
-                            {{ host.category.name }} <br>
-                            {{ host.mac_address }} <br>
-                            {{ host.ipv4_address }} <br>
-                            {{ host.ipv6_address }} <br>
-                            {{ host.wol_port }}
-                        </div>
-                    {% else %}
-                        <div class="host-default">
-                            {{ host.name }} <br>
-                            {{ host.category.name }} <br>
-                            {{ host.mac_address }} <br>
-                            {{ host.ipv4_address }} <br>
-                            {{ host.ipv6_address }} <br>
-                            {{ host.wol_port }}
-                        </div>
-                    {% endif %}
+                    <div class="host"
+                         style="background-color:{{ host.category.color }}">
+                        {{ host.name }} <br>
+                        {{ host.category.name }} <br>
+                        {{ host.mac_address }} <br>
+                        {{ host.ipv4_address }} <br>
+                        {{ host.ipv6_address }} <br>
+                        {{ host.wol_port }}
+                    </div>
                 {% endfor %}
             </div>
         </div>
