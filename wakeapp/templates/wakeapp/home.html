@@ -8,7 +8,7 @@
             <div class="host-container">
                 {% for host in hosts %}
                     <div class="host"
-                         style="background-color:{{ host.category.color }}">
+                         style="background-color:{{ host.category.color|default:"#000000" }}">
                         {{ host.name }} <br>
                         {{ host.category.name }} <br>
                         {{ host.mac_address }} <br>
