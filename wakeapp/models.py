@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from macaddress.fields import MACAddressField
+from colorful.fields import RGBColorField
 
 
 # Create your models here.
@@ -8,12 +9,12 @@ from macaddress.fields import MACAddressField
 class HostCategory(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
+    color = RGBColorField(default='#FFFFFF')
 
 
 class Host(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
-
     ipv4_address = models.GenericIPAddressField(null=True, blank=True,
                                                 protocol='IPv4')
     ipv6_address = models.GenericIPAddressField(null=True, blank=True,
