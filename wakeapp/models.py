@@ -43,6 +43,7 @@ class Host(models.Model):
     def start(self):
         if self.mac_address:
             wakeonlan.send_magic_packet(str(self.mac_address))
+            return True
         else:
             raise AttributeError("No MAC address available")
 
