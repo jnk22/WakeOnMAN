@@ -1,8 +1,8 @@
-from django.urls import path
-from . import views
+from rest_framework import routers
+from .api import HostViewSet, HostCategoryViewSet
 
-urlpatterns = [
-    path('', views.home, name='home'),
-    path('settings/', views.settings, name='settings'),
-    path('testwake/', views.testwake, name='testwake')
-]
+router = routers.DefaultRouter()
+router.register('api/wakeapp/hosts', HostViewSet, 'wakeapp')
+router.register('api/wakeapp/hostcategories', HostCategoryViewSet, 'wakeapp')
+
+urlpatterns = router.urls
