@@ -6,14 +6,6 @@ from .models import Host, HostCategory
 
 def home(request):
     context = {'hosts': Host.objects.all(), 'title': "Dashboard"}
-    print(context)
-    for key, val in context.items():
-        if key == 'hosts':
-            for elem in val:
-                try:
-                    print(elem.category)
-                except AttributeError:
-                    pass
     return render(request, 'wakeapp/home.html', context)
 
 
