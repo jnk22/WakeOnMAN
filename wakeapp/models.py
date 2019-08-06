@@ -29,7 +29,7 @@ class Host(models.Model):
                                                 protocol='IPv6')
     mac_address = MACAddressField(null=True, blank=True)
     wol_port = models.PositiveIntegerField(default=9)
-    state = models.BooleanField(default=False)
+    state = models.BooleanField(default=False, editable=False)
     last_online = models.DateTimeField(null=True, blank=True)
     date_added = models.DateTimeField(default=timezone.now)
     date_edited = models.DateTimeField(default=timezone.now)
