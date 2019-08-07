@@ -37,7 +37,7 @@ class Migration(migrations.Migration):
                 ('remote_vnc_url', models.URLField(blank=True, null=True)),
                 ('remote_teamviewer_id', models.PositiveIntegerField(blank=True, null=True)),
                 ('remote_splahstop_url', models.URLField(blank=True, null=True)),
-                ('category', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='wakeapp.HostCategory')),
+                ('category', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='wakeonman.wakeapp.HostCategory')),
             ],
         ),
     ]

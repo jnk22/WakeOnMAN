@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from wakeapp.models import Host, HostCategory
+from .models import Host, HostCategory
 
 
 # Host serializer

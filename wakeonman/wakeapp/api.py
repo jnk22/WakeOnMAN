@@ -1,5 +1,5 @@
 from rest_framework import viewsets, permissions
-from wakeapp.models import Host, HostCategory
+from .models import Host, HostCategory
 from .serializers import HostSerializer, HostCategorySerializer
 
 
