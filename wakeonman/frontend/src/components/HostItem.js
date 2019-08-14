@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
+import Button from "react-bootstrap/Button";
+
 
 class HostItem extends Component {
     render() {
@@ -13,18 +15,15 @@ class HostItem extends Component {
             text-align: left;
             text-decoration: none;
             display: inline-block;
-            font-size: 16px;`;
+            font-size: 16px;
+            cursor: pointer`;
 
-        return <HostItemStyled className="host">
-            <div>
-                ID: {this.props.host.id} ---
-                CategoryID: {this.props.host.categoryId} ---
-                Title: {this.props.host.title} ---
-                IP: {this.props.host.ip}
-            </div>
-            <div>
-                <button>Wake me up!</button>
-            </div>
+        return <HostItemStyled className="host-item">
+            ID: {this.props.host.id}<br/>
+            CategoryID: {this.props.host.categoryId}<br/>
+            Title: {this.props.host.title}<br/>
+            IP: {this.props.host.ip}<br/><br/>
+            <Button variant="outline-dark">Wake up</Button>
         </HostItemStyled>
     }
 }

@@ -37,6 +37,36 @@ class App extends Component {
                 categoryId: 1,
                 title: 'Test PC 4',
                 ip: '192.168.0.13'
+            },
+            {
+                id: 4,
+                categoryId: 1,
+                title: 'Test PC 4',
+                ip: '192.168.0.13'
+            },
+            {
+                id: 4,
+                categoryId: 1,
+                title: 'Test PC 4',
+                ip: '192.168.0.13'
+            },
+            {
+                id: 4,
+                categoryId: 1,
+                title: 'Test PC 4',
+                ip: '192.168.0.13'
+            },
+            {
+                id: 4,
+                categoryId: 1,
+                title: 'Test PC 4',
+                ip: '192.168.0.13'
+            },
+            {
+                id: 4,
+                categoryId: 1,
+                title: 'Test PC 4',
+                ip: '192.168.0.13'
             }
         ],
 
