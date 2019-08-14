@@ -1,6 +1,14 @@
 import React, {Component} from "react";
 import Hosts from "./Hosts";
-import Navigation from "./Navigation";
+import styled, {ThemeProvider} from "styled-components";
+
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+
+
+const theme = {
+    font: 'Calibri'
+};
 
 
 class App extends Component {
@@ -44,11 +52,23 @@ class App extends Component {
         ]
     };
 
+    StyledContainer = styled.div`
+        background-color: lightgray
+    `;
+
+
     render() {
         return <div className="App">
-            <div className="container">
-                <Navigation navItems={this.state.navItems}/>
-            </div>
+            <Navbar bg="light" expand="lg">
+                <Navbar.Brand href="#home">Wake On MAN</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="mr-auto">
+                        <Nav.Link href="#home">Dashboard</Nav.Link>
+                        <Nav.Link href="#link">Settings</Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
             <div className="container">
                 <Hosts hosts={this.state.hosts}/>
             </div>
