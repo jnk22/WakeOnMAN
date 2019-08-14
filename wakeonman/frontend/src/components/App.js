@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import Hosts from "./Hosts";
-import styled, {ThemeProvider} from "styled-components";
+import styled from "styled-components";
 
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
