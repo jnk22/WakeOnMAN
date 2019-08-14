@@ -3,21 +3,26 @@ import PropTypes from "prop-types";
 
 
 class HostItem extends Component {
-
-    getStyle = () => {
-        return {
-            backgroundColor: this.props.host.categoryId === 1 ? 'lightgray' : 'gray'
-        }
+    HostItemStyle = {
+        backgroundColor: this.props.host.categoryId === 1 ? 'lightgray' : 'gray',
+        border: 'none',
+        color: 'white',
+        padding: '10px 10px',
+        textAlign: 'left',
+        textDecoration: 'none',
+        display: 'inline-block',
+        fontSize: '16px'
     };
 
     render() {
-        return <div className="box" style={this.getStyle()}>
-            <div className="item-desc">
+        return <div className="host" style={this.HostItemStyle}>
+            <div>
                 ID: {this.props.host.id} ---
                 CategoryID: {this.props.host.categoryId} ---
                 Title: {this.props.host.title} ---
-                IP: {this.props.host.ip}</div>
-            <div className="item-btn">
+                IP: {this.props.host.ip}
+            </div>
+            <div>
                 <button>Wake me up!</button>
             </div>
         </div>
@@ -28,5 +33,6 @@ class HostItem extends Component {
 HostItem.propTypes = {
     host: PropTypes.object.isRequired
 };
+
 
 export default HostItem;

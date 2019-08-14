@@ -4,8 +4,15 @@ import PropTypes from "prop-types";
 
 
 class Hosts extends Component {
+    HostStyle = {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+        gridGap: '10px',
+        padding: '20px'
+    };
+
     render() {
-        return <div className="wrapper">
+        return <div className="host-container" style={this.HostStyle}>
             {this.props.hosts.map((host) => (<HostItem host={host}/>))}
         </div>
     }
@@ -15,5 +22,6 @@ class Hosts extends Component {
 Hosts.propTypes = {
     hosts: PropTypes.array.isRequired
 };
+
 
 export default Hosts;

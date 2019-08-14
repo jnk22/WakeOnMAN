@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Hosts from "./Hosts";
+import Navigation from "./Navigation";
 
 
 class App extends Component {
@@ -29,12 +30,28 @@ class App extends Component {
                 title: 'Test PC 4',
                 ip: '192.168.0.13'
             }
+        ],
+
+        navItems: [
+            {
+                id: 1,
+                title: 'Dashboard'
+            },
+            {
+                id: 2,
+                title: 'Settings'
+            }
         ]
     };
 
     render() {
-        return <div className="App container">
-            <Hosts hosts={this.state.hosts}/>
+        return <div className="App">
+            <div className="container">
+                <Navigation navItems={this.state.navItems}/>
+            </div>
+            <div className="container">
+                <Hosts hosts={this.state.hosts}/>
+            </div>
         </div>
     }
 }
