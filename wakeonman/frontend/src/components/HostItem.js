@@ -33,5 +33,4 @@ HostItem.propTypes = {
     host: PropTypes.object.isRequired
 };
 
-
 export default HostItem;
