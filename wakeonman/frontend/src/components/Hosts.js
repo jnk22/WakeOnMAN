@@ -58,7 +58,7 @@ class Hosts extends Component {
                         <th>ID</th>
                         <th>Name</th>
                         <th>Category</th>
-                        <th>Wake up</th>
+                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -68,7 +68,18 @@ class Hosts extends Component {
                             <td>{this.getState(host)}{host.name}</td>
                             <td>{this.getCategoryName(host)}</td>
                             <td>
-                                <Button variant="outline-dark">Wake up</Button>
+                                <Button variant="success">
+                                    Wake up
+                                </Button>&nbsp;
+                                <Button variant="primary">
+                                    Connect ...
+                                </Button>&nbsp;
+                                <Button variant="secondary">
+                                    Edit
+                                </Button>&nbsp;
+                                <Button variant="danger">
+                                    Delete
+                                </Button>
                             </td>
                         </tr>
                     ))}
