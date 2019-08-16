@@ -27,12 +27,24 @@ class Hosts extends Component {
     };
 
     getCategoryName = (host) => {
-        let categoryObject = this.props.hostCategories.filter(category => (category.id === host.category))[0];
+        const categoryObject = this.props.hostCategories.filter(category =>
+            (category.id === host.category))[0];
 
         if (typeof (categoryObject) === 'object') {
             return categoryObject.name;
         } else {
             return 'None';
+        }
+    };
+
+    getCategoryColor = (host) => {
+        const categoryObject = this.props.hostCategories.filter(category =>
+            (category.id === host.category))[0];
+
+        if (typeof (categoryObject) === 'object') {
+            return {backgroundColor: categoryObject.color};
+        } else {
+            return {backgroundColor: '#D3D3D3'};
         }
     };
 
@@ -51,7 +63,7 @@ class Hosts extends Component {
                     </thead>
                     <tbody>
                     {this.props.hosts.map(host => (
-                        <tr key={host.id}>
+                        <tr style={this.getCategoryColor(host)} key={host.id}>
                             <td>{host.id}</td>
                             <td>{this.getState(host)}{host.name}</td>
                             <td>{this.getCategoryName(host)}</td>
