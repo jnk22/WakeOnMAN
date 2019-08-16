@@ -16,6 +16,16 @@ class Hosts extends Component {
         this.props.getHostCategories();
     }
 
+    getState = (host) => {
+        if (host.state) {
+            return <><i style={{color: 'green'}}
+                        className="fas fa-circle">&nbsp;</i></>
+        } else {
+            return <><i style={{color: 'red'}}
+                        className="fas fa-circle">&nbsp;</i></>
+        }
+    };
+
     getCategoryName = (host) => {
         let categoryObject = this.props.hostCategories.filter(category => (category.id === host.category))[0];
 
@@ -43,7 +53,7 @@ class Hosts extends Component {
                     {this.props.hosts.map(host => (
                         <tr key={host.id}>
                             <td>{host.id}</td>
-                            <td>{host.name}</td>
+                            <td>{this.getState(host)}{host.name}</td>
                             <td>{this.getCategoryName(host)}</td>
                             <td>
                                 <Button variant="outline-dark">Wake up</Button>
