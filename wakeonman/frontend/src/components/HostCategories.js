@@ -1,10 +1,12 @@
-import React, {Component} from "react";
-import {connect} from "react-redux";
-import PropTypes from "prop-types";
-import {
-    getHostCategories, deleteHostCategory
-} from '../actions/hosts';
-import Button from "react-bootstrap/Button";
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+
+// API calls
+import {getHostCategories, deleteHostCategory} from '../actions/hosts';
+
+// React-Bootstrap components
+import Button from 'react-bootstrap/Button';
 
 
 class HostCategories extends Component {
@@ -41,7 +43,8 @@ class HostCategories extends Component {
                     </thead>
                     <tbody>
                     {this.props.hostCategories.map(category => (
-                        <tr style={this.getCategoryColor(category)} key={category.id}>
+                        <tr style={this.getCategoryColor(category)}
+                            key={category.id}>
                             <td>{category.id}</td>
                             <td>{category.name}</td>
                             <td>
@@ -67,5 +70,6 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, {
-    getHostCategories, deleteHostCategory
+    getHostCategories,
+    deleteHostCategory
 })(HostCategories);

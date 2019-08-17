@@ -1,13 +1,15 @@
-import React, {Component} from "react";
-import Hosts from "./Hosts";
-import HostForm from "./HostForm";
-import HostCategories from "./HostCategories";
-
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-
+import React, {Component} from 'react';
 import {Provider} from 'react-redux';
 import store from '../store';
+
+// React-Bootstrap components
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+
+// Host and category components
+import Hosts from './Hosts';
+import HostForm from './HostFormAdd';
+import HostCategories from './HostCategories';
 
 
 class App extends Component {

@@ -1,10 +1,13 @@
-import React, {Component} from "react";
-import {connect} from "react-redux";
-import PropTypes from "prop-types";
-import {
-    getHosts, deleteHost, getHostCategories
-} from '../actions/hosts';
-import Button from "react-bootstrap/Button";
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+
+// API calls
+import {getHosts, deleteHost, getHostCategories} from '../actions/hosts';
+
+// React-Bootstrap components
+import Button from 'react-bootstrap/Button';
+
 
 class Hosts extends Component {
     // PropTypes
@@ -23,11 +26,11 @@ class Hosts extends Component {
 
     getState = (host) => {
         if (host.state) {
-            return <><i style={{color: 'green'}}
-                        className="fas fa-circle">&nbsp;</i></>
+            return <i style={{color: 'green'}}
+                      className="fas fa-circle">&nbsp;</i>;
         } else {
-            return <><i style={{color: 'red'}}
-                        className="fas fa-circle">&nbsp;</i></>
+            return <i style={{color: 'red'}}
+                      className="fas fa-circle">&nbsp;</i>;
         }
     };
 
@@ -102,5 +105,7 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, {
-    getHosts, deleteHost, getHostCategories
+    getHosts,
+    deleteHost,
+    getHostCategories
 })(Hosts);

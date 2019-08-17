@@ -16,21 +16,25 @@ export default function (state = initialState, action) {
                 ...state,
                 hosts: action.payload
             };
+
         case ADD_HOST:
             return {
                 ...state,
                 hosts: action.payload
             };
+
         case DELETE_HOST:
             return {
                 ...state,
                 hosts: state.hosts.filter(host => host.id !== action.payload)
             };
+
         case UPDATE_HOST:
             return {
                 ...state,
                 hosts: action.payload
             };
+
         default:
             return state;
     }

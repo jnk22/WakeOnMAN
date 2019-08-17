@@ -1,12 +1,26 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
+
+// API calls
 import {addHost, getHostCategories} from '../actions/hosts';
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+
+// React-Bootstrap components
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 
-export class HostForm extends Component {
+export class HostFormAdd extends Component {
+    static propTypes = {
+        addHost: PropTypes.func.isRequired,
+        hostCategories: PropTypes.array.isRequired,
+        getHostCategories: PropTypes.func.isRequired
+    };
+
+    componentDidMount() {
+        this.props.getHostCategories();
+    }
+
     state = {
         name: '',
         description: '',
@@ -20,32 +34,12 @@ export class HostForm extends Component {
         category: '',
     };
 
-    static propTypes = {
-        addHost: PropTypes.func.isRequired,
-        hostCategories: PropTypes.array.isRequired,
-        getHostCategories: PropTypes.func.isRequired
-    };
-
-    componentDidMount() {
-        this.props.getHostCategories();
-    }
-
     onChange = e =>
         this.setState({[e.target.name]: e.target.value});
 
     onSubmit = e => {
         e.preventDefault();
-        const {
-            name, description, ipv4_address, ipv6_address, mac_address,
-            wol_port, remote_vnc_url, remote_teamviewer_id,
-            remote_splashtop_url, category
-        } = this.state;
-        const host = {
-            name, description, ipv4_address, ipv6_address, mac_address,
-            wol_port, remote_vnc_url, remote_teamviewer_id,
-            remote_splashtop_url, category
-        };
-        this.props.addHost(host);
+        this.props.addHost(this.state);
     };
 
     render() {
@@ -75,10 +69,6 @@ export class HostForm extends Component {
                                       value={category}
                                       required>
                             <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
                         </Form.Control>
                     </Form.Group>
                     <Form.Group controlId="formHostDesc">
@@ -156,4 +146,4 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
     addHost, getHostCategories
-})(HostForm);
+})(HostFormAdd);
