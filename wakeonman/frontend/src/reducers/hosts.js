@@ -24,7 +24,7 @@ export default function (state = initialState, action) {
         case DELETE_HOST:
             return {
                 ...state,
-                hosts: state.hosts.filter(host => action.payload !== host.id)
+                hosts: state.hosts.filter(host => host.id !== action.payload)
             };
         case UPDATE_HOST:
             return {
