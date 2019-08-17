@@ -20,7 +20,7 @@ export const getHosts = () => dispatch => {
                 type: GET_HOSTS,
                 payload: res.data
             });
-        }).catch(err => console.log(err)
+        }).catch(err => console.log(err.response.data)
     );
 };
 
@@ -33,7 +33,7 @@ export const addHost = (host) => dispatch => {
                 type: ADD_HOST,
                 payload: res.data
             });
-        }).catch(err => console.log(err)
+        }).catch(err => console.log(err.response.data)
     );
 };
 
@@ -46,7 +46,7 @@ export const deleteHost = (id) => dispatch => {
                 type: DELETE_HOST,
                 payload: id
             });
-        }).catch(err => console.log(err)
+        }).catch(err => console.log(err.response.data)
     );
 };
 
@@ -59,7 +59,7 @@ export const updateHost = (id) => dispatch => {
                 type: UPDATE_HOST,
                 payload: id
             });
-        }).catch(err => console.log(err)
+        }).catch(err => console.log(err.response.data)
     );
 };
 
@@ -72,7 +72,7 @@ export const getHostCategories = () => dispatch => {
                 type: GET_HOST_CATEGORIES,
                 payload: res.data
             });
-        }).catch(err => console.log(err)
+        }).catch(err => console.log(err.response.data)
     );
 };
 
@@ -85,7 +85,7 @@ export const addHostCategory = (category) => dispatch => {
                 type: ADD_HOST_CATEGORY,
                 payload: res.data
             });
-        }).catch(err => console.log(err)
+        }).catch(err => console.log(err.response.data)
     );
 };
 
@@ -98,7 +98,7 @@ export const deleteHostCategory = (id) => dispatch => {
                 type: DELETE_HOST_CATEGORY,
                 payload: id
             });
-        }).catch(err => console.log(err)
+        }).catch(err => console.log(err.response.data)
     );
 };
 
@@ -111,6 +111,6 @@ export const updateHostCategory = (id) => dispatch => {
                 type: UPDATE_HOST_CATEGORY,
                 payload: id
             });
-        }).catch(err => console.log(err)
+        }).catch(err => console.log(err.response.data)
     );
 };
