@@ -1,7 +1,10 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
-import {getHosts, getHostCategories} from '../actions/hosts';
+import {
+    getHosts, addHost, deleteHost, updateHost,
+    getHostCategories, addHostCategory, deleteHostCategory, updateHostCategory
+} from '../actions/hosts';
 import Button from "react-bootstrap/Button";
 
 class Hosts extends Component {
@@ -77,7 +80,8 @@ class Hosts extends Component {
                                 <Button variant="secondary">
                                     Edit
                                 </Button>&nbsp;
-                                <Button variant="danger">
+                                <Button variant="danger"
+                                        onClick={this.props.deleteHost.bind(this, host.id)}>
                                     Delete
                                 </Button>
                             </td>
@@ -95,4 +99,7 @@ const mapStateToProps = state => ({
     hostCategories: state.hostCategories.hostCategories
 });
 
-export default connect(mapStateToProps, {getHosts, getHostCategories})(Hosts);
+export default connect(mapStateToProps, {
+    getHosts, addHost, deleteHost, updateHost,
+    getHostCategories, addHostCategory, deleteHostCategory, updateHostCategory
+})(Hosts);
