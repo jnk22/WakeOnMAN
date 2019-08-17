@@ -20,7 +20,7 @@ export default function (state = initialState, action) {
         case ADD_HOST_CATEGORY:
             return {
                 ...state,
-                hostCategories: action.payload
+                hostCategories: [...state.hostCategories, action.payload]
             };
 
         case DELETE_HOST_CATEGORY:

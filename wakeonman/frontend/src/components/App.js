@@ -31,6 +31,7 @@ class App extends Component {
                         </Navbar.Collapse>
                     </Navbar>
                     <div className="container">
+                        <br/>
                         <Hosts/>
                         <br/>
                         <HostFormAdd/>

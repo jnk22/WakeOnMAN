@@ -39,7 +39,14 @@ export class HostFormAdd extends Component {
 
     onSubmit = e => {
         e.preventDefault();
-        this.props.addHost(this.state);
+
+        const host = {};
+        for (const [key, value] of Object.entries(this.state)) {
+            if (value) {
+                host[key] = value;
+            }
+        }
+        this.props.addHost(host);
     };
 
     render() {

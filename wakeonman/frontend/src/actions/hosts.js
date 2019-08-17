@@ -12,7 +12,7 @@ import {
 } from './types';
 
 // GET_HOSTS
-export const getHosts = () => (dispatch) => {
+export const getHosts = () => dispatch => {
     axios
         .get('/api/wakeapp/hosts/')
         .then(res => {
@@ -25,9 +25,9 @@ export const getHosts = () => (dispatch) => {
 };
 
 // ADD_HOST
-export const addHost = () => (dispatch) => {
+export const addHost = (host) => dispatch => {
     axios
-        .post('/api/wakeapp/hosts/')
+        .post('/api/wakeapp/hosts/', host)
         .then(res => {
             dispatch({
                 type: ADD_HOST,
@@ -38,7 +38,7 @@ export const addHost = () => (dispatch) => {
 };
 
 // DELETE_HOST
-export const deleteHost = (id) => (dispatch) => {
+export const deleteHost = (id) => dispatch => {
     axios
         .delete(`/api/wakeapp/hosts/${id}/`)
         .then(res => {
@@ -51,7 +51,7 @@ export const deleteHost = (id) => (dispatch) => {
 };
 
 // UPDATE_HOST
-export const updateHost = (id) => (dispatch) => {
+export const updateHost = (id) => dispatch => {
     axios
         .post(`/api/wakeapp/hosts/${id}/`)
         .then(res => {
@@ -64,7 +64,7 @@ export const updateHost = (id) => (dispatch) => {
 };
 
 // GET_HOST_CATEGORIES
-export const getHostCategories = () => (dispatch) => {
+export const getHostCategories = () => dispatch => {
     axios
         .get('/api/wakeapp/hostcategories/')
         .then(res => {
@@ -77,9 +77,9 @@ export const getHostCategories = () => (dispatch) => {
 };
 
 // ADD_HOST_CATEGORY
-export const addHostCategory = () => (dispatch) => {
+export const addHostCategory = (category) => dispatch => {
     axios
-        .post('/api/wakeapp/hostcategories/')
+        .post('/api/wakeapp/hostcategories/', category)
         .then(res => {
             dispatch({
                 type: ADD_HOST_CATEGORY,
@@ -90,7 +90,7 @@ export const addHostCategory = () => (dispatch) => {
 };
 
 // DELETE_HOST_CATEGORY
-export const deleteHostCategory = (id) => (dispatch) => {
+export const deleteHostCategory = (id) => dispatch => {
     axios
         .delete(`/api/wakeapp/hostcategories/${id}/`)
         .then(res => {
@@ -103,7 +103,7 @@ export const deleteHostCategory = (id) => (dispatch) => {
 };
 
 // UPDATE_HOST_CATEGORY
-export const updateHostCategory = (id) => (dispatch) => {
+export const updateHostCategory = (id) => dispatch => {
     axios
         .post(`/api/wakeapp/hostcategories/${id}/`)
         .then(res => {

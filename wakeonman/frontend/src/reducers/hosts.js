@@ -20,7 +20,7 @@ export default function (state = initialState, action) {
         case ADD_HOST:
             return {
                 ...state,
-                hosts: action.payload
+                hosts: [...state.hosts, action.payload]
             };
 
         case DELETE_HOST:

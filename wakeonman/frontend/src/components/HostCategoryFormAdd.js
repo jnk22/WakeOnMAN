@@ -10,7 +10,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 
-export class HostFormAdd extends Component {
+export class HostCategoryFormAdd extends Component {
     static propTypes = {
         addHostCategory: PropTypes.func.isRequired,
     };
@@ -26,7 +26,14 @@ export class HostFormAdd extends Component {
 
     onSubmit = e => {
         e.preventDefault();
-        this.props.addHostCategory(this.state);
+
+        const category = {};
+        for (const [key, value] of Object.entries(this.state)) {
+            if (value) {
+                category[key] = value;
+            }
+        }
+        this.props.addHostCategory(category);
     };
 
     render() {
@@ -71,4 +78,4 @@ export class HostFormAdd extends Component {
 
 export default connect(null, {
     addHostCategory,
-})(HostFormAdd);
+})(HostCategoryFormAdd);

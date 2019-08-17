@@ -1,3 +1,4 @@
+export const GET_ERRORS = 'GET_ERRORS';
 export const GET_HOSTS = 'GET_HOSTS';
 export const ADD_HOST = 'ADD_HOST';
 export const DELETE_HOST = 'DELETE_HOST';
