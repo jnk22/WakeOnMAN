@@ -11,7 +11,13 @@ class Hosts extends Component {
     // PropTypes
     static propTypes = {
         hosts: PropTypes.array.isRequired,
-        hostCategories: PropTypes.array.isRequired
+        getHosts: PropTypes.func.isRequired,
+        addHost: PropTypes.func.isRequired,
+        deleteHost: PropTypes.func.isRequired,
+        hostCategories: PropTypes.array.isRequired,
+        getHostsCategory: PropTypes.func.isRequired,
+        addHostCategory: PropTypes.func.isRequired,
+        deleteHostCategory: PropTypes.func.isRequired
     };
 
     componentDidMount() {
