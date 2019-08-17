@@ -2,8 +2,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {
-    getHosts, addHost, deleteHost, updateHost,
-    getHostCategories, addHostCategory, deleteHostCategory, updateHostCategory
+    getHosts, deleteHost, getHostCategories
 } from '../actions/hosts';
 import Button from "react-bootstrap/Button";
 
@@ -12,12 +11,9 @@ class Hosts extends Component {
     static propTypes = {
         hosts: PropTypes.array.isRequired,
         getHosts: PropTypes.func.isRequired,
-        addHost: PropTypes.func.isRequired,
         deleteHost: PropTypes.func.isRequired,
         hostCategories: PropTypes.array.isRequired,
         getHostCategories: PropTypes.func.isRequired,
-        addHostCategory: PropTypes.func.isRequired,
-        deleteHostCategory: PropTypes.func.isRequired
     };
 
     componentDidMount() {
@@ -60,7 +56,7 @@ class Hosts extends Component {
     render() {
         return (
             <>
-                <h1>Dashboard</h1>
+                <h1>Hosts</h1>
                 <table className="table table-striped">
                     <thead>
                     <tr>
@@ -106,6 +102,5 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, {
-    getHosts, addHost, deleteHost, updateHost,
-    getHostCategories, addHostCategory, deleteHostCategory, updateHostCategory
+    getHosts, deleteHost, getHostCategories
 })(Hosts);

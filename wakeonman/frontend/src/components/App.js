@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Hosts from "./Hosts";
 import HostForm from "./HostForm";
+import HostCategories from "./HostCategories";
 
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -25,9 +26,11 @@ class App extends Component {
                         </Navbar.Collapse>
                     </Navbar>
                     <div className="container">
-                        <HostForm/>
-                        <br/><br/>
                         <Hosts/>
+                        <br/>
+                        <HostForm/>
+                        <br/>
+                        <HostCategories/>
                     </div>
                 </div>
             </Provider>
