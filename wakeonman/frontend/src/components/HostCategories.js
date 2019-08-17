@@ -36,7 +36,6 @@ class HostCategories extends Component {
                 <table className="table table-striped">
                     <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Name</th>
                         <th>Actions</th>
                     </tr>
@@ -45,7 +44,6 @@ class HostCategories extends Component {
                     {this.props.hostCategories.map(category => (
                         <tr style={this.getCategoryColor(category)}
                             key={category.id}>
-                            <td>{category.id}</td>
                             <td>{category.name}</td>
                             <td>
                                 <Button variant="secondary">

@@ -8,8 +8,9 @@ import Nav from 'react-bootstrap/Nav';
 
 // Host and category components
 import Hosts from './Hosts';
-import HostForm from './HostFormAdd';
+import HostFormAdd from './HostFormAdd';
 import HostCategories from './HostCategories';
+import HostCategoryFormAdd from './HostCategoryFormAdd';
 
 
 class App extends Component {
@@ -32,9 +33,12 @@ class App extends Component {
                     <div className="container">
                         <Hosts/>
                         <br/>
-                        <HostForm/>
+                        <HostFormAdd/>
                         <br/>
                         <HostCategories/>
+                        <br/>
+                        <HostCategoryFormAdd/>
+                        <br/>
                     </div>
                 </div>
             </Provider>

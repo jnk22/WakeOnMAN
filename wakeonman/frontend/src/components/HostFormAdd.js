@@ -132,7 +132,7 @@ export class HostFormAdd extends Component {
                                       value={remote_splashtop_url}/>
                     </Form.Group>
                     <Button variant="primary" type="submit">
-                        Submit
+                        Add host
                     </Button>
                 </Form>
             </>
@@ -145,5 +145,6 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, {
-    addHost, getHostCategories
+    addHost,
+    getHostCategories
 })(HostFormAdd);

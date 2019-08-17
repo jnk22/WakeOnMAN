@@ -63,7 +63,6 @@ class Hosts extends Component {
                 <table className="table table-striped">
                     <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Name</th>
                         <th>Category</th>
                         <th>Actions</th>
@@ -72,7 +71,6 @@ class Hosts extends Component {
                     <tbody>
                     {this.props.hosts.map(host => (
                         <tr style={this.getCategoryColor(host)} key={host.id}>
-                            <td>{host.id}</td>
                             <td>{this.getState(host)}{host.name}</td>
                             <td>{this.getCategoryName(host)}</td>
                             <td>
