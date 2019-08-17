@@ -26,7 +26,7 @@ export const getHosts = () => (dispatch) => {
 
 export const addHost = () => (dispatch) => {
     axios
-        .get(`/api/wakeapp/hosts/`)
+        .post(`/api/wakeapp/hosts/`)
         .then(res => {
             dispatch({
                 type: ADD_HOST,
@@ -50,7 +50,7 @@ export const deleteHost = (id) => (dispatch) => {
 
 export const updateHost = (id) => (dispatch) => {
     axios
-        .put(`/api/wakeapp/hosts/${id}/`)
+        .post(`/api/wakeapp/hosts/${id}/`)
         .then(res => {
             dispatch({
                 type: UPDATE_HOST,
@@ -75,7 +75,7 @@ export const getHostCategories = () => (dispatch) => {
 
 export const addHostCategory = () => (dispatch) => {
     axios
-        .put(`/api/wakeapp/hostcategories/`)
+        .post(`/api/wakeapp/hostcategories/`)
         .then(res => {
             dispatch({
                 type: ADD_HOST_CATEGORY,
@@ -99,7 +99,7 @@ export const deleteHostCategory = (id) => (dispatch) => {
 
 export const updateHostCategory = (id) => (dispatch) => {
     axios
-        .put(`/api/wakeapp/hostcategories/${id}/`)
+        .post(`/api/wakeapp/hostcategories/${id}/`)
         .then(res => {
             dispatch({
                 type: UPDATE_HOST_CATEGORY,
