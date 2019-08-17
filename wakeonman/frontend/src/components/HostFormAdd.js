@@ -75,7 +75,13 @@ export class HostFormAdd extends Component {
                                       onChange={this.onChange}
                                       value={category}
                                       required>
-                            <option>1</option>
+                            <option value={null}>---</option>
+                            {this.props.hostCategories.map(category => (
+                                <option key={category.id}
+                                        value={category.id}>
+                                    {category.name}
+                                </option>
+                            ))}
                         </Form.Control>
                     </Form.Group>
                     <Form.Group controlId="formHostDesc">
