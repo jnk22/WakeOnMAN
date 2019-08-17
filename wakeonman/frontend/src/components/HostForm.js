@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import {addHost} from '../actions/hosts';
+import {connect} from 'react-redux';
+import PropTypes from "prop-types";
+import {addHost, getHostCategories} from '../actions/hosts';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
@@ -18,12 +20,32 @@ export class HostForm extends Component {
         category: '',
     };
 
+    static propTypes = {
+        addHost: PropTypes.func.isRequired,
+        hostCategories: PropTypes.array.isRequired,
+        getHostCategories: PropTypes.func.isRequired
+    };
+
+    componentDidMount() {
+        this.props.getHostCategories();
+    }
+
     onChange = e =>
         this.setState({[e.target.name]: e.target.value});
 
     onSubmit = e => {
         e.preventDefault();
-        console.log('submit');
+        const {
+            name, description, ipv4_address, ipv6_address, mac_address,
+            wol_port, remote_vnc_url, remote_teamviewer_id,
+            remote_splashtop_url, category
+        } = this.state;
+        const host = {
+            name, description, ipv4_address, ipv6_address, mac_address,
+            wol_port, remote_vnc_url, remote_teamviewer_id,
+            remote_splashtop_url, category
+        };
+        this.props.addHost(host);
     };
 
     render() {
@@ -128,4 +150,10 @@ export class HostForm extends Component {
     }
 }
 
-export default HostForm;
+const mapStateToProps = state => ({
+    hostCategories: state.hostCategories.hostCategories
+});
+
+export default connect(mapStateToProps, {
+    addHost, getHostCategories
+})(HostForm);
