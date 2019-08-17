@@ -22,6 +22,8 @@ class App extends Component {
                             <Nav className="mr-auto">
                                 <Nav.Link href="#home">Dashboard</Nav.Link>
                                 <Nav.Link href="#link">Settings</Nav.Link>
+                                <Nav.Link href="#users">Users</Nav.Link>
+                                <Nav.Link href="#info">Info</Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>
