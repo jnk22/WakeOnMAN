@@ -15,7 +15,7 @@ class Hosts extends Component {
         addHost: PropTypes.func.isRequired,
         deleteHost: PropTypes.func.isRequired,
         hostCategories: PropTypes.array.isRequired,
-        getHostsCategory: PropTypes.func.isRequired,
+        getHostCategories: PropTypes.func.isRequired,
         addHostCategory: PropTypes.func.isRequired,
         deleteHostCategory: PropTypes.func.isRequired
     };
