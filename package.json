@@ -4,7 +4,7 @@
   "description": "WakeOnMAN",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development wakeonman/frontend/src/index.js --output ./wakeonman/frontend/static/frontend/main.js",
+    "dev": "webpack --mode development --watch wakeonman/frontend/src/index.js --output ./wakeonman/frontend/static/frontend/main.js",
     "build": "webpack --mode production wakeonman/frontend/src/index.js --output ./wakeonman/frontend/static/frontend/main.js"
   },
   "repository": {
