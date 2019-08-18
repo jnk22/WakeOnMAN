@@ -8,7 +8,8 @@ import {addHostCategory} from '../actions/hosts';
 // React-Bootstrap components
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-
+import Row from "react-bootstrap/Row";
+import Col from 'react-bootstrap/Col';
 
 export class HostCategoryFormAdd extends Component {
     static propTypes = {
@@ -43,29 +44,35 @@ export class HostCategoryFormAdd extends Component {
             <>
                 <h1>Add Host Category</h1>
                 <Form onSubmit={this.onSubmit}>
-                    <Form.Group controlId="formHostCategoryName">
-                        <Form.Label>Name</Form.Label>
-                        <Form.Control type="input"
-                                      name="name"
-                                      onChange={this.onChange}
-                                      value={name}
-                                      required/>
+                    <Form.Group as={Row} controlId="formHostCategoryName">
+                        <Form.Label column sm="2">Name</Form.Label>
+                        <Col sm="10">
+                            <Form.Control type="input"
+                                          name="name"
+                                          onChange={this.onChange}
+                                          value={name}
+                                          required/>
+                        </Col>
                     </Form.Group>
-                    <Form.Group controlId="formHostCategoryDesc">
-                        <Form.Label>Description</Form.Label>
-                        <Form.Control as="textarea"
-                                      rows="3"
-                                      name="description"
-                                      onChange={this.onChange}
-                                      value={description}/>
+                    <Form.Group as={Row} controlId="formHostCategoryDesc">
+                        <Form.Label column sm="2">Description</Form.Label>
+                        <Col sm="10">
+                            <Form.Control as="textarea"
+                                          rows="3"
+                                          name="description"
+                                          onChange={this.onChange}
+                                          value={description}/>
+                        </Col>
                     </Form.Group>
-                    <Form.Group controlId="formHostCategoryColor">
-                        <Form.Label>Color</Form.Label>
-                        <Form.Control type="input"
-                                      name="color"
-                                      onChange={this.onChange}
-                                      value={color}
-                                      required/>
+                    <Form.Group as={Row} controlId="formHostCategoryColor">
+                        <Form.Label column sm="2">Color</Form.Label>
+                        <Col sm="10">
+                            <Form.Control type="input"
+                                          name="color"
+                                          onChange={this.onChange}
+                                          value={color}
+                                          required/>
+                        </Col>
                     </Form.Group>
                     <Button variant="primary" type="submit">
                         Add category
