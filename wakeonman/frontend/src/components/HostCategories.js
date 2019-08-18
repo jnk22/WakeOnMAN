@@ -40,23 +40,33 @@ class HostCategories extends Component {
                         <th>Actions</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    {this.props.hostCategories.map(category => (
-                        <tr style={this.getCategoryColor(category)}
-                            key={category.id}>
-                            <td>{category.name}</td>
-                            <td>
-                                <Button variant="secondary">
-                                    Edit
-                                </Button>&nbsp;
-                                <Button variant="danger"
-                                        onClick={this.props.deleteHostCategory.bind(this, category.id)}>
-                                    Delete
-                                </Button>
+                    {this.props.hostCategories.length > 0 ? (
+                        <tbody>
+                        {this.props.hostCategories.map(category => (
+                            <tr style={this.getCategoryColor(category)}
+                                key={category.id}>
+                                <td>{category.name}</td>
+                                <td>
+                                    <Button variant="secondary">
+                                        Edit
+                                    </Button>&nbsp;
+                                    <Button variant="danger"
+                                            onClick={this.props.deleteHostCategory.bind(this, category.id)}>
+                                        Delete
+                                    </Button>
+                                </td>
+                            </tr>
+                        ))}
+                        </tbody>) : (
+                        <tbody>
+                        <tr>
+                            <td colSpan="2" style={{
+                                fontStyle: 'italic'
+                            }}>No category found
                             </td>
                         </tr>
-                    ))}
-                    </tbody>
+                        </tbody>
+                    )}
                 </table>
             </>
         );

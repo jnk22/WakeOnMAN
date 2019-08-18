@@ -68,29 +68,40 @@ class Hosts extends Component {
                         <th>Actions</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    {this.props.hosts.map(host => (
-                        <tr style={this.getCategoryColor(host)} key={host.id}>
-                            <td>{this.getState(host)}{host.name}</td>
-                            <td>{this.getCategoryName(host)}</td>
-                            <td>
-                                <Button variant="success">
-                                    Wake up
-                                </Button>&nbsp;
-                                <Button variant="primary">
-                                    Connect ...
-                                </Button>&nbsp;
-                                <Button variant="secondary">
-                                    Edit
-                                </Button>&nbsp;
-                                <Button variant="danger"
-                                        onClick={this.props.deleteHost.bind(this, host.id)}>
-                                    Delete
-                                </Button>
+                    {this.props.hosts.length > 0 ? (
+                        <tbody>
+                        {this.props.hosts.map(host => (
+                            <tr style={this.getCategoryColor(host)}
+                                key={host.id}>
+                                <td>{this.getState(host)}{host.name}</td>
+                                <td>{this.getCategoryName(host)}</td>
+                                <td>
+                                    <Button variant="success">
+                                        Wake up
+                                    </Button>&nbsp;
+                                    <Button variant="primary">
+                                        Connect ...
+                                    </Button>&nbsp;
+                                    <Button variant="secondary">
+                                        Edit
+                                    </Button>&nbsp;
+                                    <Button variant="danger"
+                                            onClick={this.props.deleteHost.bind(this, host.id)}>
+                                        Delete
+                                    </Button>
+                                </td>
+                            </tr>
+                        ))}
+                        </tbody>) : (
+                        <tbody>
+                        <tr>
+                            <td colSpan="3" style={{
+                                fontStyle: 'italic'
+                            }}>No host found
                             </td>
                         </tr>
-                    ))}
-                    </tbody>
+                        </tbody>
+                    )}
                 </table>
             </>
         );
