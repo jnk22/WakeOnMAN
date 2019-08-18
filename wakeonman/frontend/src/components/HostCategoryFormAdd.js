@@ -74,9 +74,11 @@ export class HostCategoryFormAdd extends Component {
                                           required/>
                         </Col>
                     </Form.Group>
-                    <Button variant="primary" type="submit">
-                        Add category
-                    </Button>
+                    <span style={{display: 'flex', justifyContent: 'flex-end'}}>
+                        <Button variant="primary" type="submit">
+                            Add category
+                        </Button>
+                    </span>
                 </Form>
             </>
         );

@@ -166,9 +166,11 @@ export class HostFormAdd extends Component {
                                           value={remote_splashtop_url}/>
                         </Col>
                     </Form.Group>
-                    <Button variant="primary" type="submit">
-                        Add host
-                    </Button>
+                    <span style={{display: 'flex', justifyContent: 'flex-end'}}>
+                        <Button variant="primary" type="submit">
+                            Add host
+                        </Button>
+                    </span>
                 </Form>
             </>
         );
