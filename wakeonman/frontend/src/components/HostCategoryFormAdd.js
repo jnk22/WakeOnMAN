@@ -11,6 +11,9 @@ import Button from 'react-bootstrap/Button';
 import Row from "react-bootstrap/Row";
 import Col from 'react-bootstrap/Col';
 
+// React Color
+import {CirclePicker} from 'react-color';
+
 export class HostCategoryFormAdd extends Component {
     static propTypes = {
         addHostCategory: PropTypes.func.isRequired,
@@ -19,7 +22,24 @@ export class HostCategoryFormAdd extends Component {
     state = {
         name: '',
         description: '',
-        color: '#333333',
+        color: '#FFFFFF',
+    };
+
+    colorInput = React.createRef();
+    colors = [
+        '#F44336', '#E91e63', '#9C27b0', '#673AB7',
+        '#3F51B5', '#2196F3', '#03A9f4', '#00BCD4',
+        '#009688', '#4CAF50', '#8BC34A', '#CDDC39',
+        '#FFEB3B', '#FFC107', '#FF9800', '#FF5722',
+        '#795548', '#607D8B', '#99FFCC', '#CCCC99',
+        '#CCCCCC', '#CCCCFF', '#CCFF99', '#CCFFCC',
+        '#CCFFFF', '#FFCC99', '#FFCCCC', '#FFCCFF',
+        '#FFFF99', '#FFFFCC', '#A9B3AB', '#C4CCB7',
+        '#EAEEC9', '#EEE1B7', '#E8CAAE'];
+
+    handleColorChangeComplete = (color) => {
+        this.state.color = color.hex.toUpperCase();
+        this.colorInput.current.value = color.hex.toUpperCase();
     };
 
     onChange = e =>
@@ -71,7 +91,11 @@ export class HostCategoryFormAdd extends Component {
                                           name="color"
                                           onChange={this.onChange}
                                           value={color}
-                                          required/>
+                                          ref={this.colorInput}
+                                          required/><br/>
+                            <CirclePicker width="100%"
+                                          colors={this.colors}
+                                          onChangeComplete={this.handleColorChangeComplete}/>
                         </Col>
                     </Form.Group>
                     <span style={{display: 'flex', justifyContent: 'flex-end'}}>
