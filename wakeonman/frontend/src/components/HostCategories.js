@@ -62,7 +62,7 @@ class HostCategories extends Component {
                         <tr>
                             <td colSpan="2" style={{
                                 fontStyle: 'italic'
-                            }}>No category found
+                            }}>No categories found
                             </td>
                         </tr>
                         </tbody>
