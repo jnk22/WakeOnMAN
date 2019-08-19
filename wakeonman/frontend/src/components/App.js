@@ -23,8 +23,10 @@ class App extends Component {
                         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="mr-auto">
-                                <Nav.Link href="#home">Dashboard</Nav.Link>
-                                <Nav.Link href="#link">Settings</Nav.Link>
+                                <Nav.Link href="#dashboard">Dashboard</Nav.Link>
+                                <Nav.Link href="#hosts">Hosts</Nav.Link>
+                                <Nav.Link href="#categories">Categories</Nav.Link>
+                                <Nav.Link href="#settings">Settings</Nav.Link>
                                 <Nav.Link href="#users">Users</Nav.Link>
                                 <Nav.Link href="#info">Info</Nav.Link>
                             </Nav>
