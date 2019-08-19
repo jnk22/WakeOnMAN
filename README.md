@@ -13,11 +13,7 @@ Client/Server application for sending WOL magic packets to specified clients in 
 
 ### Preview
 
-![wom1.jpg](/screenshots/wom1.jpg?raw=true "Wake On MAN - Hosts Overview")
-
-![wom2.jpg](/screenshots/wom2.jpg?raw=true "Wake On MAN - Add new Host")
-
-![wom3.jpg](/screenshots/wom3.jpg?raw=true "Wake On MAN - Host Categories")
+![Wake On MAN - Preview](/screenshots/wom.png?raw=true "Wake On MAN - Preview")
 
 ### Requirements
 
