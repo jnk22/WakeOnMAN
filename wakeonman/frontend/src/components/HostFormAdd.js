@@ -48,6 +48,10 @@ export class HostFormAdd extends Component {
                 host[key] = value;
             }
         }
+        if (isNaN(host.category)) {
+            delete host.category;
+        }
+
         this.props.addHost(host);
     };
 

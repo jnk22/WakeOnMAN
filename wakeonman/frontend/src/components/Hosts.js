@@ -56,6 +56,11 @@ class Hosts extends Component {
                 backgroundColor: category.color,
                 color: contrastFontColor(category.color)
             };
+        } else {
+            return {
+                backgroundColor: '#FFFFFF',
+                color: '#000000'
+            };
         }
     };
 
