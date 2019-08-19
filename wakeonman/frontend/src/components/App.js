@@ -2,11 +2,8 @@ import React, {Component} from 'react';
 import {Provider} from 'react-redux';
 import store from '../store';
 
-// React-Bootstrap components
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-
 // Host and category components
+import Header from './Header';
 import Hosts from './Hosts';
 import HostFormAdd from './HostFormAdd';
 import HostCategories from './HostCategories';
@@ -18,20 +15,7 @@ class App extends Component {
         return (
             <Provider store={store}>
                 <div className="App">
-                    <Navbar bg="light" expand="lg">
-                        <Navbar.Brand href="#home">Wake On MAN</Navbar.Brand>
-                        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-                        <Navbar.Collapse id="basic-navbar-nav">
-                            <Nav className="mr-auto">
-                                <Nav.Link href="#dashboard">Dashboard</Nav.Link>
-                                <Nav.Link href="#hosts">Hosts</Nav.Link>
-                                <Nav.Link href="#categories">Categories</Nav.Link>
-                                <Nav.Link href="#settings">Settings</Nav.Link>
-                                <Nav.Link href="#users">Users</Nav.Link>
-                                <Nav.Link href="#info">Info</Nav.Link>
-                            </Nav>
-                        </Navbar.Collapse>
-                    </Navbar>
+                    <Header/>
                     <div className="container">
                         <br/>
                         <Hosts/>
