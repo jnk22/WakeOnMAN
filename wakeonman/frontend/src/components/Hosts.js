@@ -108,9 +108,8 @@ class Hosts extends Component {
                         </tbody>) : (
                         <tbody>
                         <tr>
-                            <td colSpan="3" style={{
-                                fontStyle: 'italic'
-                            }}>No hosts found
+                            <td colSpan="3" style={{fontStyle: 'italic'}}>
+                                No hosts found
                             </td>
                         </tr>
                         </tbody>
