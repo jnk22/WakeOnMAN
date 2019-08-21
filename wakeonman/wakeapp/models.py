@@ -41,11 +41,14 @@ class Host(models.Model):
                                  null=True, blank=True)
 
     def start(self):
-        if self.mac_address:
+        if self.mac_address is None:
+            raise ValueError("No MAC address available.")
+
+        try:
             wakeonlan.send_magic_packet(str(self.mac_address))
             return True
-        else:
-            raise AttributeError("No MAC address available")
+        except ValueError as msg:
+            raise ValueError(msg)
 
     def find_mac(self):
         mac_address_ipv4 = getmac.get_mac_address(self.ipv4_address)

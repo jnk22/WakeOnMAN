@@ -1,4 +1,6 @@
 from rest_framework import viewsets, permissions
+from rest_framework.decorators import action
+from rest_framework.response import Response
 from .models import Host, HostCategory
 from .serializers import HostSerializer, HostCategorySerializer
 
@@ -8,6 +10,15 @@ class HostViewSet(viewsets.ModelViewSet):
     queryset = Host.objects.all()
     permissions_classes = [permissions.AllowAny]
     serializer_class = HostSerializer
+
+    @action(detail=True, methods=['patch'])
+    def start(self, request, pk=None):
+        host = self.get_object()
+        try:
+            host.start()
+            return Response({'status': 'Wake up command successfully sent.'})
+        except ValueError as msg:
+            return Response({'status': str(msg)})
 
 
 # HostCategory ViewSet

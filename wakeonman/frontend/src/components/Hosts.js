@@ -4,7 +4,12 @@ import PropTypes from 'prop-types';
 import {contrastFontColor} from '../library/utils';
 
 // API calls
-import {getHosts, deleteHost, getHostCategories} from '../actions/hosts';
+import {
+    getHosts,
+    deleteHost,
+    startHost,
+    getHostCategories
+} from '../actions/hosts';
 
 // React-Bootstrap components
 import Button from 'react-bootstrap/Button';
@@ -16,6 +21,7 @@ class Hosts extends Component {
         hosts: PropTypes.array.isRequired,
         getHosts: PropTypes.func.isRequired,
         deleteHost: PropTypes.func.isRequired,
+        startHost: PropTypes.func.isRequired,
         hostCategories: PropTypes.array.isRequired,
         getHostCategories: PropTypes.func.isRequired,
     };
@@ -94,7 +100,8 @@ class Hosts extends Component {
                                 <td>{this.getState(host)}{host.name}</td>
                                 <td>{this.getCategoryName(host)}</td>
                                 <td>
-                                    <Button variant="success">
+                                    <Button variant="success"
+                                            onClick={this.props.startHost.bind(this, host.id)}>
                                         Wake up
                                     </Button>&nbsp;
                                     <Button variant="primary">
@@ -133,5 +140,6 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
     getHosts,
     deleteHost,
+    startHost,
     getHostCategories
 })(Hosts);

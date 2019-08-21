@@ -8,6 +8,7 @@ class HostSerializer(serializers.ModelSerializer):
         model = Host
         fields = '__all__'
 
+
 # HostCategory serializer
 class HostCategorySerializer(serializers.ModelSerializer):
     class Meta:

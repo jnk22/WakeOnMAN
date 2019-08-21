@@ -2,7 +2,8 @@ import {
     GET_HOSTS,
     ADD_HOST,
     DELETE_HOST,
-    UPDATE_HOST
+    UPDATE_HOST,
+    START_HOST
 } from '../actions/types';
 
 const initialState = {
@@ -32,7 +33,13 @@ export default function (state = initialState, action) {
         case UPDATE_HOST:
             return {
                 ...state,
-                hosts: action.payload
+                hosts: state.hosts
+            };
+
+        case START_HOST:
+            return {
+                ...state,
+                hosts: state.hosts
             };
 
         default:
