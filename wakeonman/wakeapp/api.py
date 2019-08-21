@@ -20,6 +20,21 @@ class HostViewSet(viewsets.ModelViewSet):
         except ValueError as msg:
             return Response({'status': str(msg)})
 
+    @action(detail=True, methods=['patch'])
+    def ping(self, request, pk=None):
+        host = self.get_object()
+        try:
+            state = host.check_state()
+            host.save()
+            if state:
+                return Response(
+                    {'status': 'Ping successfully sent. Client is online'})
+            else:
+                return Response(
+                    {'status': 'Ping successfully sent. Client is offline'})
+        except ValueError as msg:
+            return Response({'status': str(msg)})
+
 
 # HostCategory ViewSet
 class HostCategoryViewSet(viewsets.ModelViewSet):

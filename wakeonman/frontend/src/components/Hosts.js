@@ -8,6 +8,7 @@ import {
     getHosts,
     deleteHost,
     startHost,
+    pingHost,
     getHostCategories
 } from '../actions/hosts';
 
@@ -22,6 +23,7 @@ class Hosts extends Component {
         getHosts: PropTypes.func.isRequired,
         deleteHost: PropTypes.func.isRequired,
         startHost: PropTypes.func.isRequired,
+        pingHost: PropTypes.func.isRequired,
         hostCategories: PropTypes.array.isRequired,
         getHostCategories: PropTypes.func.isRequired,
     };
@@ -73,10 +75,10 @@ class Hosts extends Component {
     getState = (host) => {
         if (host.state) {
             return <i style={{color: 'green'}}
-                      className="fas fa-circle">&nbsp;</i>;
+                      className="fas fa-circle">&ensp;</i>;
         } else {
             return <i style={{color: 'red'}}
-                      className="fas fa-circle">&nbsp;</i>;
+                      className="fas fa-circle">&ensp;</i>;
         }
     };
 
@@ -97,7 +99,7 @@ class Hosts extends Component {
                         {this.props.hosts.map(host => (
                             <tr style={this.rowHostStyle(host)}
                                 key={host.id}>
-                                <td>{this.getState(host)}{host.name}</td>
+                                <td>{this.props.pingHost(host.id)}{this.getState(host)}{host.name}</td>
                                 <td>{this.getCategoryName(host)}</td>
                                 <td>
                                     <Button variant="success"
@@ -141,5 +143,6 @@ export default connect(mapStateToProps, {
     getHosts,
     deleteHost,
     startHost,
+    pingHost,
     getHostCategories
 })(Hosts);

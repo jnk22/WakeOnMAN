@@ -6,6 +6,7 @@ import {
     DELETE_HOST,
     UPDATE_HOST,
     START_HOST,
+    PING_HOST,
     GET_HOST_CATEGORIES,
     ADD_HOST_CATEGORY,
     DELETE_HOST_CATEGORY,
@@ -71,6 +72,19 @@ export const startHost = (id) => dispatch => {
         .then(res => {
             dispatch({
                 type: START_HOST,
+                payload: id
+            });
+        }).catch(err => console.log(err.response.data)
+    );
+};
+
+// PING_HOST
+export const pingHost = (id) => dispatch => {
+    axios
+        .patch(`/api/hosts/${id}/ping/`)
+        .then(res => {
+            dispatch({
+                type: PING_HOST,
                 payload: id
             });
         }).catch(err => console.log(err.response.data)

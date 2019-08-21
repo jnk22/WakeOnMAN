@@ -3,7 +3,8 @@ import {
     ADD_HOST,
     DELETE_HOST,
     UPDATE_HOST,
-    START_HOST
+    START_HOST,
+    PING_HOST
 } from '../actions/types';
 
 const initialState = {
@@ -37,6 +38,12 @@ export default function (state = initialState, action) {
             };
 
         case START_HOST:
+            return {
+                ...state,
+                hosts: state.hosts
+            };
+
+        case PING_HOST:
             return {
                 ...state,
                 hosts: state.hosts

@@ -5,6 +5,7 @@ from colorful.fields import RGBColorField
 
 import wakeonlan
 import getmac
+from multiping import MultiPing
 
 
 class HostCategory(models.Model):
@@ -30,7 +31,7 @@ class Host(models.Model):
                                                 protocol='IPv6')
     mac_address = MACAddressField(null=True, blank=True)
     wol_port = models.PositiveIntegerField(default=9)
-    state = models.BooleanField(default=False, editable=False)
+    state = models.BooleanField(default=False)
     last_online = models.DateTimeField(null=True, blank=True, editable=False)
     date_added = models.DateTimeField(default=timezone.now, editable=False)
     date_edited = models.DateTimeField(default=timezone.now, editable=False)
@@ -62,6 +63,26 @@ class Host(models.Model):
             return mac_address_ipv6
         else:
             raise AttributeError("Both IPs do not match the same MAC address")
+
+    def check_state(self):
+        # Create list of both IPv4 and IPv6 addresses if available
+        ip_addresses = [ip for ip in [self.ipv4_address, self.ipv6_address]
+                        if ip is not None]
+
+        if not ip_addresses:
+            raise ValueError("No IPs available")
+
+        ping = MultiPing(ip_addresses)
+        ping.send()
+        responses, no_responses = ping.receive(1)
+
+        if responses:
+            self.state = True
+            self.last_online = timezone.now()
+            return True
+        else:
+            self.state = False
+            return False
 
     def __str__(self):
         return self.name
