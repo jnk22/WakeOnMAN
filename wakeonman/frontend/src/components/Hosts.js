@@ -72,7 +72,7 @@ class Hosts extends Component {
         }
     };
 
-    getState = (host) => {
+    getHostState = (host) => {
         if (host.state) {
             return <i style={{color: 'green'}}
                       className="fas fa-circle">&ensp;</i>;
@@ -99,7 +99,7 @@ class Hosts extends Component {
                         {this.props.hosts.map(host => (
                             <tr style={this.rowHostStyle(host)}
                                 key={host.id}>
-                                <td>{this.props.pingHost(host.id)}{this.getState(host)}{host.name}</td>
+                                <td>{this.props.pingHost(host.id)}{this.getHostState(host)}{host.name}</td>
                                 <td>{this.getCategoryName(host)}</td>
                                 <td>
                                     <Button variant="success"
