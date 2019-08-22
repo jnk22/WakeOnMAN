@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.signals import pre_save, post_init
 from django.utils import timezone
 from macaddress.fields import MACAddressField
 from colorful.fields import RGBColorField
@@ -52,17 +53,20 @@ class Host(models.Model):
             raise ValueError(msg)
 
     def find_mac(self):
-        mac_address_ipv4 = getmac.get_mac_address(self.ipv4_address)
-        mac_address_ipv6 = getmac.get_mac_address(self.ipv6_address)
+        mac_ipv4 = getmac.get_mac_address(
+            ip=str(self.ipv4_address)) if self.ipv4_address else None
+        mac_ipv6 = getmac.get_mac_address(
+            ip6=str(self.ipv6_address)) if self.ipv6_address else None
 
-        if mac_address_ipv4 == mac_address_ipv6:
-            return mac_address_ipv4
-        if mac_address_ipv4 and not mac_address_ipv6:
-            return mac_address_ipv4
-        elif mac_address_ipv6 and not mac_address_ipv4:
-            return mac_address_ipv6
+        if mac_ipv4 == mac_ipv6:
+            return mac_ipv4
+
+        if mac_ipv4 and not mac_ipv6:
+            return mac_ipv4
+        elif mac_ipv6 and not mac_ipv4:
+            return mac_ipv6
         else:
-            raise AttributeError("Both IPs do not match the same MAC address")
+            raise ValueError("Both IPs do not match the same MAC address")
 
     def ping(self):
         # Create list of both IPv4 and IPv6 addresses if available
@@ -89,3 +93,22 @@ class Host(models.Model):
 
     class Meta:
         ordering = ['category', 'name']
+
+
+def host_update_states(sender, instance, **kwargs):
+    try:
+        instance.state = instance.ping()
+    except ValueError:
+        instance.state = False
+
+
+def host_update_mac(sender, instance, **kwargs):
+    if not instance.mac_address:
+        try:
+            instance.mac_address = instance.find_mac()
+        except ValueError:
+            instance.mac_address = None
+
+
+pre_save.connect(host_update_states, sender=Host)
+post_init.connect(host_update_mac, sender=Host)
