@@ -8,7 +8,6 @@ import {
     getHosts,
     deleteHost,
     startHost,
-    pingHost,
     getHostCategories
 } from '../actions/hosts';
 
@@ -23,7 +22,6 @@ class Hosts extends Component {
         getHosts: PropTypes.func.isRequired,
         deleteHost: PropTypes.func.isRequired,
         startHost: PropTypes.func.isRequired,
-        pingHost: PropTypes.func.isRequired,
         hostCategories: PropTypes.array.isRequired,
         getHostCategories: PropTypes.func.isRequired,
     };
@@ -32,10 +30,6 @@ class Hosts extends Component {
         this.props.getHosts();
         this.props.getHostCategories();
     }
-
-    // Set state lastRender that hosts will only be pinged once
-    // during last render output
-    state = {lastRender: -5};
 
     getHostCategoryObject = (host) => {
         const category = this.props.hostCategories.filter(category =>
@@ -89,7 +83,6 @@ class Hosts extends Component {
     render() {
         return (
             <>
-                <script>{this.state.lastRender < 0 && this.state.lastRender++}</script>
                 <h1>Hosts</h1>
                 <table className="table table-striped">
                     <thead>
@@ -105,7 +98,6 @@ class Hosts extends Component {
                             <tr style={this.rowHostStyle(host)}
                                 key={host.id}>
                                 <td>
-                                    {this.state.lastRender === 0 && this.props.pingHost(host.id)}
                                     {this.getHostState(host)}
                                     {host.name}</td>
                                 <td>
@@ -153,6 +145,5 @@ export default connect(mapStateToProps, {
     getHosts,
     deleteHost,
     startHost,
-    pingHost,
     getHostCategories
 })(Hosts);
