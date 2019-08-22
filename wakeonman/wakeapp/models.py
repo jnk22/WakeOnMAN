@@ -64,7 +64,7 @@ class Host(models.Model):
         else:
             raise AttributeError("Both IPs do not match the same MAC address")
 
-    def check_state(self):
+    def ping(self):
         # Create list of both IPv4 and IPv6 addresses if available
         ip_addresses = [ip for ip in [self.ipv4_address, self.ipv6_address]
                         if ip is not None]
