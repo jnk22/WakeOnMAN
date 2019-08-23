@@ -34,7 +34,7 @@ class CategoriesTable extends Component {
     render() {
         return (
             <>
-                <h1>Host Categories</h1>
+                <h1>Categories</h1>
                 <table className="table table-striped">
                     <thead>
                     <tr>
