@@ -7,7 +7,9 @@ import store from '../store';
 import Header from './layout/Header';
 import Dashboard from './hosts/Dashboard';
 import Hosts from './hosts/Hosts';
+import HostsForm from "./hosts/HostsForm";
 import Categories from './hosts/Categories';
+import CategoriesForm from "./hosts/CategoriesForm";
 import Settings from './settings/Settings';
 import Users from './settings/Users';
 import About from './settings/About';
@@ -26,8 +28,12 @@ class App extends Component {
                                        component={Dashboard}/>
                                 <Route exact path="/hosts"
                                        component={Hosts}/>
+                                <Route exact path="/addhost"
+                                       component={HostsForm}/>
                                 <Route exact path="/categories"
                                        component={Categories}/>
+                                <Route exact path="/addcategory"
+                                       component={CategoriesForm}/>
                                 <Route exact path="/settings"
                                        component={Settings}/>
                                 <Route exact path="/users"

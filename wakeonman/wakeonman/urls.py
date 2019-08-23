@@ -9,6 +9,8 @@ urlpatterns = [
     re_path(r'^settings', include('frontend.urls')),
     re_path(r'^users', include('frontend.urls')),
     re_path(r'^about', include('frontend.urls')),
+    re_path(r'^addhost', include('frontend.urls')),
+    re_path(r'^addcategory', include('frontend.urls')),
     path('', include('frontend.urls')),
     path('', include('wakeapp.urls')),
 ]

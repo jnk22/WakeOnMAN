@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -14,9 +15,15 @@ import Col from 'react-bootstrap/Col';
 // React Color
 import {CirclePicker} from 'react-color';
 
-export class CategoryForm extends Component {
+class CategoriesForm extends Component {
+    constructor(props) {
+        super(props);
+        this.routeChange = this.routeChange.bind(this);
+    }
+
+    // PropTypes
     static propTypes = {
-        addHostCategory: PropTypes.func.isRequired,
+        addHostCategory: PropTypes.func.isRequired
     };
 
     state = {
@@ -37,6 +44,11 @@ export class CategoryForm extends Component {
         '#FFFF99', '#FFFFCC', '#A9B3AB', '#C4CCB7',
         '#EAEEC9', '#EEE1B7', '#E8CAAE'];
 
+    routeChange() {
+        let path = `categories`;
+        this.props.history.push(path);
+    }
+
     handleColorChangeComplete = (color) => {
         this.state.color = color.hex.toUpperCase();
         this.colorInput.current.value = color.hex.toUpperCase();
@@ -55,6 +67,9 @@ export class CategoryForm extends Component {
             }
         }
         this.props.addHostCategory(category);
+
+        // TODO: Validate new category, then redirect
+        this.routeChange();
     };
 
     render() {
@@ -62,6 +77,7 @@ export class CategoryForm extends Component {
 
         return (
             <>
+                <br/>
                 <h1>Add Host Category</h1>
                 <Form onSubmit={this.onSubmit}>
                     <Form.Group as={Row} controlId="formHostCategoryName">
@@ -110,5 +126,5 @@ export class CategoryForm extends Component {
 }
 
 export default connect(null, {
-    addHostCategory,
-})(CategoryForm);
+    addHostCategory
+})(withRouter(CategoriesForm));

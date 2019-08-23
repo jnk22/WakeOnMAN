@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -12,7 +13,13 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 
-export class HostsForm extends Component {
+class HostsForm extends Component {
+    constructor(props) {
+        super(props);
+        this.routeChange = this.routeChange.bind(this);
+    }
+
+    // PropTypes
     static propTypes = {
         addHost: PropTypes.func.isRequired,
         hostCategories: PropTypes.array.isRequired,
@@ -36,6 +43,11 @@ export class HostsForm extends Component {
         category: '',
     };
 
+    routeChange() {
+        let path = `hosts`;
+        this.props.history.push(path);
+    }
+
     onChange = e =>
         this.setState({[e.target.name]: e.target.value});
 
@@ -53,6 +65,9 @@ export class HostsForm extends Component {
         }
 
         this.props.addHost(host);
+
+        // TODO: Validate new host, then redirect
+        this.routeChange();
     };
 
     render() {
@@ -64,6 +79,7 @@ export class HostsForm extends Component {
 
         return (
             <>
+                <br/>
                 <h1>Add Host</h1>
                 <Form onSubmit={this.onSubmit}>
                     <Form.Group as={Row} controlId="formHostName">
@@ -188,4 +204,4 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
     addHost,
     getHostCategories
-})(HostsForm);
+})(withRouter(HostsForm));
