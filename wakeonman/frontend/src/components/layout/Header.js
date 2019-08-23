@@ -10,7 +10,7 @@ class Header extends Component {
     render() {
         return (
             <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="/dashboard">Wake On MAN</Navbar.Brand>
+                <Navbar.Brand href="/">Wake On MAN</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
