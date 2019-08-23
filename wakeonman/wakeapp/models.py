@@ -110,5 +110,5 @@ def host_update_mac(sender, instance, **kwargs):
             instance.mac_address = None
 
 
-pre_save.connect(host_update_states, sender=Host)
-post_init.connect(host_update_mac, sender=Host)
+pre_save.connect(host_update_mac, sender=Host)
+post_init.connect(host_update_states, sender=Host)
