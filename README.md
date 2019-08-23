@@ -1,6 +1,6 @@
 # Wake On MAN
 
-_Work in Progess_
+_Work in Progress_
 
 ## Introduction
 
@@ -13,7 +13,13 @@ Client/Server application for sending WOL magic packets to specified clients in 
 
 ### Preview
 
-![Wake On MAN - Preview](/screenshots/wom.png?raw=true "Wake On MAN - Preview")
+![Wake On MAN - Hosts](/screenshots/hosts_full.png?raw=true "Wake On MAN - Hosts")
+
+![Wake On MAN - Add Host](/screenshots/addhost_full.png?raw=true "Wake On MAN - Add Host")
+
+![Wake On MAN - Categories](/screenshots/categories_full.png?raw=true "Wake On MAN - Categories")
+
+![Wake On MAN - Add Category](/screenshots/addcategory_full.png?raw=true "Wake On MAN - Add Category")
 
 ### Requirements
 
