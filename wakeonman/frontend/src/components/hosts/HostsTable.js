@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {contrastFontColor} from '../library/utils';
+import {contrastFontColor} from '../../library/utils';
 
 // API calls
 import {
@@ -9,13 +9,13 @@ import {
     deleteHost,
     startHost,
     getHostCategories
-} from '../actions/hosts';
+} from '../../actions/hosts';
 
 // React-Bootstrap components
 import Button from 'react-bootstrap/Button';
 
 
-class Hosts extends Component {
+class HostsTable extends Component {
     // PropTypes
     static propTypes = {
         hosts: PropTypes.array.isRequired,
@@ -146,4 +146,4 @@ export default connect(mapStateToProps, {
     deleteHost,
     startHost,
     getHostCategories
-})(Hosts);
+})(HostsTable);

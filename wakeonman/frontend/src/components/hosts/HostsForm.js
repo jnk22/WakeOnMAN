@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 // API calls
-import {addHost, getHostCategories} from '../actions/hosts';
+import {addHost, getHostCategories} from '../../actions/hosts';
 
 // React-Bootstrap components
 import Form from 'react-bootstrap/Form';
@@ -12,7 +12,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 
-export class HostFormAdd extends Component {
+export class HostsForm extends Component {
     static propTypes = {
         addHost: PropTypes.func.isRequired,
         hostCategories: PropTypes.array.isRequired,
@@ -188,4 +188,4 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
     addHost,
     getHostCategories
-})(HostFormAdd);
+})(HostsForm);

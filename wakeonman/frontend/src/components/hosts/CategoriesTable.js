@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {contrastFontColor} from '../library/utils';
+import {contrastFontColor} from '../../library/utils';
 
 // API calls
-import {getHostCategories, deleteHostCategory} from '../actions/hosts';
+import {getHostCategories, deleteHostCategory} from '../../actions/hosts';
 
 // React-Bootstrap components
 import Button from 'react-bootstrap/Button';
 
 
-class HostCategories extends Component {
+class CategoriesTable extends Component {
     // PropTypes
     static propTypes = {
         hostCategories: PropTypes.array.isRequired,
@@ -81,4 +81,4 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
     getHostCategories,
     deleteHostCategory
-})(HostCategories);
+})(CategoriesTable);

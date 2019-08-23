@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 // API calls
-import {addHostCategory} from '../actions/hosts';
+import {addHostCategory} from '../../actions/hosts';
 
 // React-Bootstrap components
 import Form from 'react-bootstrap/Form';
@@ -14,7 +14,7 @@ import Col from 'react-bootstrap/Col';
 // React Color
 import {CirclePicker} from 'react-color';
 
-export class HostCategoryFormAdd extends Component {
+export class CategoryForm extends Component {
     static propTypes = {
         addHostCategory: PropTypes.func.isRequired,
     };
@@ -111,4 +111,4 @@ export class HostCategoryFormAdd extends Component {
 
 export default connect(null, {
     addHostCategory,
-})(HostCategoryFormAdd);
+})(CategoryForm);
