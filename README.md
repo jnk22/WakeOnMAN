@@ -13,13 +13,10 @@ Client/Server application for sending WOL magic packets to specified clients in 
 
 ### Preview
 
-![Wake On MAN - Hosts](/screenshots/hosts_full.png?raw=true "Wake On MAN - Hosts")
-
-![Wake On MAN - Add Host](/screenshots/addhost_full.png?raw=true "Wake On MAN - Add Host")
-
-![Wake On MAN - Categories](/screenshots/categories_full.png?raw=true "Wake On MAN - Categories")
-
-![Wake On MAN - Add Category](/screenshots/addcategory_full.png?raw=true "Wake On MAN - Add Category")
+<kbd><img width=400 height=333 src="/screenshots/hosts_full.png?raw=true"/></kbd>
+<kbd><img width=400 height=333 src="/screenshots/addhost_full.png?raw=true"/></kbd>
+<kbd><img width=400 height=333 src="/screenshots/categories_full.png?raw=true"/></kbd>
+<kbd><img width=400 height=333 src="/screenshots/addcategory_full.png?raw=true"/></kbd>
 
 ### Requirements
 
