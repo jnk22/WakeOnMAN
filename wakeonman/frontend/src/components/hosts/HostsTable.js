@@ -84,6 +84,7 @@ class HostsTable extends Component {
         return (
             <>
                 <h1>Hosts</h1>
+                <br/>
                 <table className="table table-striped">
                     <thead>
                     <tr>

@@ -35,6 +35,7 @@ class CategoriesTable extends Component {
         return (
             <>
                 <h1>Categories</h1>
+                <br/>
                 <table className="table table-striped">
                     <thead>
                     <tr>

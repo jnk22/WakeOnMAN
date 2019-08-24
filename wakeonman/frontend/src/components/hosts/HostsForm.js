@@ -81,6 +81,7 @@ class HostsForm extends Component {
             <>
                 <br/>
                 <h1>Add Host</h1>
+                <br/>
                 <Form onSubmit={this.onSubmit}>
                     <Form.Group as={Row} controlId="formHostName">
                         <Form.Label column sm="2">Name</Form.Label>

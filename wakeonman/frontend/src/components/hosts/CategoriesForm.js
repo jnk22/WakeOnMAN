@@ -78,7 +78,8 @@ class CategoriesForm extends Component {
         return (
             <>
                 <br/>
-                <h1>Add Host Category</h1>
+                <h1>Add Category</h1>
+                <br/>
                 <Form onSubmit={this.onSubmit}>
                     <Form.Group as={Row} controlId="formHostCategoryName">
                         <Form.Label column sm="2">Name</Form.Label>
