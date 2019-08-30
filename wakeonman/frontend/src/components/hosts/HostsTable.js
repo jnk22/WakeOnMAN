@@ -13,6 +13,8 @@ import {
 
 // React-Bootstrap components
 import Button from 'react-bootstrap/Button';
+import {Link} from "react-router-dom";
+import HostsForm from "./HostsForm";
 
 
 class HostsTable extends Component {
@@ -23,7 +25,7 @@ class HostsTable extends Component {
         deleteHost: PropTypes.func.isRequired,
         startHost: PropTypes.func.isRequired,
         hostCategories: PropTypes.array.isRequired,
-        getHostCategories: PropTypes.func.isRequired,
+        getHostCategories: PropTypes.func.isRequired
     };
 
     componentDidMount() {
@@ -112,9 +114,15 @@ class HostsTable extends Component {
                                     <Button variant="primary">
                                         Connect ...
                                     </Button>&nbsp;
-                                    <Button variant="secondary">
-                                        Edit
-                                    </Button>&nbsp;
+                                    <Link to={{
+                                        pathname: '/addhost',
+                                        state: {hostID: host.id}
+                                    }} component={HostsForm}>
+                                        <Button variant="secondary"
+                                                type="submit">
+                                            Edit
+                                        </Button>&nbsp;
+                                    </Link>
                                     <Button variant="danger"
                                             onClick={this.props.deleteHost.bind(this, host.id)}>
                                         Delete

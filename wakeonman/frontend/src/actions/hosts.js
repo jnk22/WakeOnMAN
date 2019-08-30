@@ -53,13 +53,13 @@ export const deleteHost = (id) => dispatch => {
 };
 
 // UPDATE_HOST
-export const updateHost = (id) => dispatch => {
+export const updateHost = (id, host) => dispatch => {
     axios
-        .patch(`/api/hosts/${id}/`)
+        .patch(`/api/hosts/${id}/`, host)
         .then(res => {
             dispatch({
                 type: UPDATE_HOST,
-                payload: id
+                payload: res.data
             });
         }).catch(err => console.log(err.response.data)
     );

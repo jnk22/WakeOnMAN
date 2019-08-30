@@ -4,7 +4,12 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 // API calls
-import {addHost, getHostCategories} from '../../actions/hosts';
+import {
+    getHosts,
+    addHost,
+    updateHost,
+    getHostCategories
+} from '../../actions/hosts';
 
 // React-Bootstrap components
 import Form from 'react-bootstrap/Form';
@@ -21,13 +26,29 @@ class HostsForm extends Component {
 
     // PropTypes
     static propTypes = {
+        hosts: PropTypes.array.isRequired,
+        getHosts: PropTypes.func.isRequired,
         addHost: PropTypes.func.isRequired,
+        updateHost: PropTypes.func.isRequired,
         hostCategories: PropTypes.array.isRequired,
         getHostCategories: PropTypes.func.isRequired
     };
 
     componentDidMount() {
         this.props.getHostCategories();
+        this.props.getHosts();
+
+        // Check if HostsForm has been called with a specific ID (by clicking
+        // 'Edit'-button). If so, fetch the host object and update state values
+        // respectively.
+        if (this.props.location.state !== undefined && Number.isInteger(this.props.location.state.hostID)) {
+            const host = this.getHostObjectByID(this.props.location.state.hostID);
+            for (const [key, value] of Object.entries(host)) {
+                if (value) {
+                    this.state[key] = value;
+                }
+            }
+        }
     }
 
     state = {
@@ -48,6 +69,9 @@ class HostsForm extends Component {
         this.props.history.push(path);
     }
 
+    getHostObjectByID = (id) =>
+        this.props.hosts.filter(host => host.id === id)[0];
+
     onChange = e =>
         this.setState({[e.target.name]: e.target.value});
 
@@ -64,7 +88,11 @@ class HostsForm extends Component {
             delete host.category;
         }
 
-        this.props.addHost(host);
+        if (this.props.location.state !== undefined && Number.isInteger(this.props.location.state.hostID)) {
+            this.props.updateHost(this.props.location.state.hostID, host);
+        } else {
+            this.props.addHost(host);
+        }
 
         // TODO: Validate new host, then redirect
         this.routeChange();
@@ -199,10 +227,13 @@ class HostsForm extends Component {
 }
 
 const mapStateToProps = state => ({
-    hostCategories: state.hostCategories.hostCategories
+    hostCategories: state.hostCategories.hostCategories,
+    hosts: state.hosts.hosts
 });
 
 export default connect(mapStateToProps, {
+    getHosts,
     addHost,
+    updateHost,
     getHostCategories
 })(withRouter(HostsForm));
