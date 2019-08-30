@@ -32,9 +32,13 @@ export default function (state = initialState, action) {
             };
 
         case UPDATE_HOST:
+            state.hosts = state.hosts.filter(host =>
+                host.id !== action.payload.id);
+            state.hosts.push(action.payload);
+
             return {
                 ...state,
-                hosts: state.hosts
+                hosts: [...state.hosts]
             };
 
         case START_HOST:

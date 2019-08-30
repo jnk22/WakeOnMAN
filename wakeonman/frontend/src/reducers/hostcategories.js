@@ -18,9 +18,14 @@ export default function (state = initialState, action) {
             };
 
         case ADD_HOST_CATEGORY:
+            state.hostCategories.push(action.payload);
+            state.hostCategories.sort(function (a, b) {
+                return a.name > b.name ? 1 : a.name < b.name ? -1 : 0;
+            });
+
             return {
                 ...state,
-                hostCategories: [...state.hostCategories, action.payload]
+                hostCategories: [...state.hostCategories]
             };
 
         case DELETE_HOST_CATEGORY:
@@ -31,9 +36,16 @@ export default function (state = initialState, action) {
             };
 
         case UPDATE_HOST_CATEGORY:
+            state.hostCategories = state.hostCategories.filter(hostCategory =>
+                hostCategory.id !== action.payload.id);
+            state.hostCategories.push(action.payload);
+            state.hostCategories.sort(function (a, b) {
+                return a.name > b.name ? 1 : a.name < b.name ? -1 : 0;
+            });
+
             return {
                 ...state,
-                hostCategories: state.hostCategories
+                hostCategories: [...state.hostCategories]
             };
 
         default:
