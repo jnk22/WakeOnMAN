@@ -51,6 +51,9 @@ class HostsForm extends Component {
         }
     }
 
+    formIdentifier = this.props.location.state !== undefined && Number.isInteger(this.props.location.state.hostID)
+        ? 'Update' : 'Add';
+
     state = {
         name: '',
         description: '',
@@ -108,7 +111,7 @@ class HostsForm extends Component {
         return (
             <>
                 <br/>
-                <h1>Add Host</h1>
+                <h1>{this.formIdentifier} Host</h1>
                 <br/>
                 <Form onSubmit={this.onSubmit}>
                     <Form.Group as={Row} controlId="formHostName">
@@ -215,9 +218,10 @@ class HostsForm extends Component {
                                           value={remote_splashtop_url}/>
                         </Col>
                     </Form.Group>
+                    <br/>
                     <span style={{display: 'flex', justifyContent: 'flex-end'}}>
                         <Button variant="primary" type="submit">
-                            Add host
+                            {this.formIdentifier} host
                         </Button>
                     </span>
                 </Form>

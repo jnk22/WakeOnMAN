@@ -49,6 +49,9 @@ class CategoriesForm extends Component {
         }
     }
 
+    formIdentifier = this.props.location.state !== undefined && Number.isInteger(this.props.location.state.categoryID)
+        ? 'Update' : 'Add';
+
     state = {
         name: '',
         description: '',
@@ -109,7 +112,7 @@ class CategoriesForm extends Component {
         return (
             <>
                 <br/>
-                <h1>Add Category</h1>
+                <h1>{this.formIdentifier} Category</h1>
                 <br/>
                 <Form onSubmit={this.onSubmit}>
                     <Form.Group as={Row} controlId="formHostCategoryName">
@@ -146,9 +149,10 @@ class CategoriesForm extends Component {
                                           onChangeComplete={this.handleColorChangeComplete}/>
                         </Col>
                     </Form.Group>
+                    <br/>
                     <span style={{display: 'flex', justifyContent: 'flex-end'}}>
                         <Button variant="primary" type="submit">
-                            Add category
+                            {this.formIdentifier} category
                         </Button>
                     </span>
                 </Form>
