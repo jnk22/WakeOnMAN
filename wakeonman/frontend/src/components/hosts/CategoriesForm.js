@@ -4,7 +4,11 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 // API calls
-import {addHostCategory} from '../../actions/hosts';
+import {
+    getHostCategories,
+    addHostCategory,
+    updateHostCategory
+} from '../../actions/hosts';
 
 // React-Bootstrap components
 import Form from 'react-bootstrap/Form';
@@ -23,8 +27,27 @@ class CategoriesForm extends Component {
 
     // PropTypes
     static propTypes = {
-        addHostCategory: PropTypes.func.isRequired
+        hostCategories: PropTypes.array.isRequired,
+        getHostCategories: PropTypes.func.isRequired,
+        addHostCategory: PropTypes.func.isRequired,
+        updateHostCategory: PropTypes.func.isRequired
     };
+
+    componentDidMount() {
+        this.props.getHostCategories();
+
+        // Check if CategoriesForm has been called with a specific ID (by
+        // clicking 'Edit'-button). If so, fetch the host object and update
+        // state values respectively.
+        if (this.props.location.state !== undefined && Number.isInteger(this.props.location.state.categoryID)) {
+            const host = this.getCategoryObjectByID(this.props.location.state.categoryID);
+            for (const [key, value] of Object.entries(host)) {
+                if (value) {
+                    this.state[key] = value;
+                }
+            }
+        }
+    }
 
     state = {
         name: '',
@@ -49,6 +72,9 @@ class CategoriesForm extends Component {
         this.props.history.push(path);
     }
 
+    getCategoryObjectByID = (id) =>
+        this.props.hostCategories.filter(category => category.id === id)[0];
+
     handleColorChangeComplete = (color) => {
         this.state.color = color.hex.toUpperCase();
         this.colorInput.current.value = color.hex.toUpperCase();
@@ -66,7 +92,12 @@ class CategoriesForm extends Component {
                 category[key] = value;
             }
         }
-        this.props.addHostCategory(category);
+
+        if (this.props.location.state !== undefined && Number.isInteger(this.props.location.state.categoryID)) {
+            this.props.updateHostCategory(this.props.location.state.categoryID, category);
+        } else {
+            this.props.addHostCategory(category);
+        }
 
         // TODO: Validate new category, then redirect
         this.routeChange();
@@ -126,6 +157,12 @@ class CategoriesForm extends Component {
     }
 }
 
-export default connect(null, {
-    addHostCategory
+const mapStateToProps = state => ({
+    hostCategories: state.hostCategories.hostCategories
+});
+
+export default connect(mapStateToProps, {
+    getHostCategories,
+    addHostCategory,
+    updateHostCategory
 })(withRouter(CategoriesForm));

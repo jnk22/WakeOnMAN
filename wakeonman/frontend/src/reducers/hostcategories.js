@@ -33,7 +33,7 @@ export default function (state = initialState, action) {
         case UPDATE_HOST_CATEGORY:
             return {
                 ...state,
-                hostCategories: action.payload
+                hostCategories: state.hostCategories
             };
 
         default:

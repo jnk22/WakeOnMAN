@@ -8,6 +8,8 @@ import {getHostCategories, deleteHostCategory} from '../../actions/hosts';
 
 // React-Bootstrap components
 import Button from 'react-bootstrap/Button';
+import {Link} from "react-router-dom";
+import CategoriesForm from "./CategoriesForm";
 
 
 class CategoriesTable extends Component {
@@ -50,9 +52,15 @@ class CategoriesTable extends Component {
                                 key={category.id}>
                                 <td>{category.name}</td>
                                 <td>
-                                    <Button variant="secondary">
-                                        Edit
-                                    </Button>&nbsp;
+                                    <Link to={{
+                                        pathname: '/addcategory',
+                                        state: {categoryID: category.id}
+                                    }} component={CategoriesForm}>
+                                        <Button variant="secondary"
+                                                type="submit">
+                                            Edit
+                                        </Button>&nbsp;
+                                    </Link>
                                     <Button variant="danger"
                                             onClick={this.props.deleteHostCategory.bind(this, category.id)}>
                                         Delete

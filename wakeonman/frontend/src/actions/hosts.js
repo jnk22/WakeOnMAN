@@ -131,13 +131,13 @@ export const deleteHostCategory = (id) => dispatch => {
 };
 
 // UPDATE_HOST_CATEGORY
-export const updateHostCategory = (id) => dispatch => {
+export const updateHostCategory = (id, category) => dispatch => {
     axios
-        .post(`/api/hostcategories/${id}/`)
+        .patch(`/api/hostcategories/${id}/`, category)
         .then(res => {
             dispatch({
                 type: UPDATE_HOST_CATEGORY,
-                payload: id
+                payload: res.data
             });
         }).catch(err => console.log(err.response.data)
     );
