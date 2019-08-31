@@ -11,20 +11,20 @@ from multiping import MultiPing
 
 class HostCategory(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True, max_length=500)
     color = RGBColorField(default='#FFFFFF')
-
-    def __str__(self):
-        return self.name
 
     class Meta:
         ordering = ['name']
 
+    def __str__(self):
+        return self.name
+
 
 class Host(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True, max_length=500)
     ipv4_address = models.GenericIPAddressField(null=True, blank=True,
                                                 protocol='IPv4')
@@ -41,6 +41,12 @@ class Host(models.Model):
     remote_splahstop_url = models.URLField(null=True, blank=True)
     category = models.ForeignKey(HostCategory, on_delete=models.SET_NULL,
                                  null=True, blank=True)
+
+    class Meta:
+        ordering = ['category', 'name']
+
+    def __str__(self):
+        return self.name
 
     def start(self):
         if self.mac_address is None:
@@ -87,12 +93,6 @@ class Host(models.Model):
         else:
             self.state = False
             return False
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        ordering = ['category', 'name']
 
 
 def host_update_states(sender, instance, **kwargs):
